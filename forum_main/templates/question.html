@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <div class="card mt-4">
+        <div class="card-body">
+            <h5 class="card-title">{{ question.title }}</h5>
+            <p class="card-text">{{ question.text }}</p>
+            <p class="card-text">
+                <small class="text-muted">
+                    {{ question.author }} - {{ question.published_date|date:"j F, Y f"  }}
+                </small>
+            </p>
+
+            {% include 'render_answers.html' %}
+            {% if user.is_authenticated %}
+            <div class="container my-4">
+            <h5>Answer this question</h5>
+            <form action="/question/{{ question.id }}" method="post">
+                <div class="form-group">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input class='btn btn-dark' type="submit">
+                </div>
+            </form>
+            </div>
+            {% else %}
+            <div class="messages container pt-3" style="margin:auto;width: 35%;">
+                    To answer questions please <a href="/auth/login">log in</a> or <a href="/auth/signup">sign up</a>:)
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

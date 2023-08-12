@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="list-group">
+    {% for category in categories %}
+        <a class="list-group-item list-group-item-action"
+           href="/?category={{ category.id }}">
+                {{ category.name }}
+        </a>
+    {% endfor %}
+</div>
+
+{% endblock %}

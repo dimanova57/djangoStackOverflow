@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    {% for post in posts %}
+        <div class="card my-2">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a href="/post/{{ post.id }}">{{ post.title }}</a>
+                </h5>
+                <small class="text-muted">
+                    {{ post.author }} - {{ post.published_date|date:"j F, Y f"  }}
+                </small>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

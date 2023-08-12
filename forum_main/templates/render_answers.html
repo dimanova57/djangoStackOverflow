@@ -1,0 +1,14 @@
+
+    {% for answer in answers %}
+                <div class="card mt-2">
+                    <div class="card-body">
+                        <div class="card-text"><a class="answer-a" style="text-decoration: none; color: black; cursor: pointer;" href="/question/{{ answer.question.id }}">{{ answer.text }}</a></div>
+                        <div class="card-text">
+                            <small class="text-muted">
+                                {{ answer.author }} - {{ answer.published_date|date:"j F, Y f"  }}
+                            </small>
+                        </div>
+                    </div>
+                </div>
+</style>
+    {% endfor %}
